@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="fr">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Web</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100%;
+      min-height: 100%;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    header {
+      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #0369a1;
+      letter-spacing: 1px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 5px;
+    }
+
+    .social-icon:hover {
+      border-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .nav-button {
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #0369a1;
+      background-color: transparent;
+    }
+
+    .nav-button:hover {
+      border-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    main {
+      padding: 80px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60%;
+    }
+
+    h1 {
+      color: #0369a1;
+      font-size: 180px;
+      font-weight: 900;
+      margin-bottom: 40px;
+      line-height: 1.1;
+    }
+
+    p {
+      color: #000000;
+      font-size: 28px;
+      line-height: 1.8;
+      max-width: 1000px;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <header>
+   <div class="logo" id="logo-text">
+    LOGO
+   </div>
+   <div class="nav-right">
+    <div class="social-icons"><!-- Instagram Icon -->
+     <div class="social-icon">
+      <svg width="30" height="30" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#0369a1" stroke-width="2" /> <circle cx="12" cy="12" r="4" stroke="#0369a1" stroke-width="2" /> <circle cx="18" cy="6" r="1.5" fill="#0369a1" />
+      </svg>
+     </div><!-- Facebook Icon -->
+     <div class="social-icon">
+      <svg width="30" height="30" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#0369a1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+     </div>
+    </div><button class="nav-button" id="contact-button">Nous contacter</button> <button class="nav-button" id="login-button">Se connecter</button> <button class="nav-button" id="signup-button">Créer un compte</button>
+   </div>
+  </header>
+  <main>
+   <h1 id="main-title">Trouver vos futurs partenaires</h1>
+   <p id="main-description">Avec CoFounder's, vous pourrez trouver vos futurs partenaires plus vite, plus facilement de projet dans une multitude de domaines professionnels</p>
+  </main>
+  <script>
+    const defaultConfig = {
+      background_color: "#ffffff",
+      header_color: "#bae6fd",
+      text_color: "#0369a1",
+      logo_text: "LOGO",
+      contact_button: "Nous contacter",
+      login_button: "Se connecter",
+      signup_button: "Créer un compte",
+      main_title: "Trouver vos futurs partenaires",
+      main_description: "Avec CoFounder's, vous pourrez trouver vos futurs partenaires plus vite, plus facilement de projet dans une multitude de domaines professionnels"
+    };
+
+    async function onConfigChange(config) {
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const headerColor = config.header_color || defaultConfig.header_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const logoText = config.logo_text || defaultConfig.logo_text;
+      const contactButton = config.contact_button || defaultConfig.contact_button;
+      const loginButton = config.login_button || defaultConfig.login_button;
+      const signupButton = config.signup_button || defaultConfig.signup_button;
+      const mainTitle = config.main_title || defaultConfig.main_title;
+      const mainDescription = config.main_description || defaultConfig.main_description;
+
+      document.body.style.backgroundColor = backgroundColor;
+      document.querySelector('header').style.background = `linear-gradient(135deg, ${headerColor} 0%, ${headerColor}dd 100%)`;
+      
+      const textElements = document.querySelectorAll('.logo, .nav-button, h1');
+      textElements.forEach(el => {
+        el.style.color = textColor;
+      });
+
+      const svgPaths = document.querySelectorAll('svg path, svg rect, svg circle[stroke]');
+      svgPaths.forEach(path => {
+        path.setAttribute('stroke', textColor);
+      });
+
+      const svgFills = document.querySelectorAll('svg circle[fill]');
+      svgFills.forEach(circle => {
+        circle.setAttribute('fill', textColor);
+      });
+
+      document.getElementById('logo-text').textContent = logoText;
+      document.getElementById('contact-button').textContent = contactButton;
+      document.getElementById('login-button').textContent = loginButton;
+      document.getElementById('signup-button').textContent = signupButton;
+      document.getElementById('main-title').textContent = mainTitle;
+      document.getElementById('main-description').textContent = mainDescription;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.header_color || defaultConfig.header_color,
+            set: (value) => {
+              config.header_color = value;
+              window.elementSdk.setConfig({ header_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["logo_text", config.logo_text || defaultConfig.logo_text],
+        ["contact_button", config.contact_button || defaultConfig.contact_button],
+        ["login_button", config.login_button || defaultConfig.login_button],
+        ["signup_button", config.signup_button || defaultConfig.signup_button],
+        ["main_title", config.main_title || defaultConfig.main_title],
+        ["main_description", config.main_description || defaultConfig.main_description]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    document.getElementById('contact-button').addEventListener('click', () => {
+      const message = document.createElement('div');
+      message.textContent = 'Formulaire de contact à venir !';
+      message.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #0369a1; color: white; padding: 20px 40px; border-radius: 10px; font-size: 18px; z-index: 1000;';
+      document.body.appendChild(message);
+      setTimeout(() => message.remove(), 2000);
+    });
+
+    document.getElementById('login-button').addEventListener('click', () => {
+      const message = document.createElement('div');
+      message.textContent = 'Page de connexion à venir !';
+      message.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #0369a1; color: white; padding: 20px 40px; border-radius: 10px; font-size: 18px; z-index: 1000;';
+      document.body.appendChild(message);
+      setTimeout(() => message.remove(), 2000);
+    });
+
+    document.getElementById('signup-button').addEventListener('click', () => {
+      const message = document.createElement('div');
+      message.textContent = 'Page d\'inscription à venir !';
+      message.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #0369a1; color: white; padding: 20px 40px; border-radius: 10px; font-size: 18px; z-index: 1000;';
+      document.body.appendChild(message);
+      setTimeout(() => message.remove(), 2000);
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99be8469d749f0e8',t:'MTc2MjcwMzk2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
